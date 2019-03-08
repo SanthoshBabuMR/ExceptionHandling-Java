@@ -21,10 +21,8 @@ public class ExceptionsDemo {
 		catch (IOException e) {
 			System.out.println("Connecting to a different server");
 		}
-		catch (Exception e) {
-		}
-		catch(Throwable e) {
-		}
+		catch (Exception e) { }
+		catch(Throwable e) { }
 		System.out.println("\n End of share...");
 	}
 }
