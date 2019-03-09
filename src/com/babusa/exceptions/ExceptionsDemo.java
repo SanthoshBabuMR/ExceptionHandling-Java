@@ -48,8 +48,8 @@ public class ExceptionsDemo {
 			// Item 61
 			e.getCause().printStackTrace();
 		}
-//		catch (Exception e) { }
-//		catch(Throwable e) { }
+		// catch (Exception e) { }
+		// catch(Throwable e) { }
 		finally {
 			System.out.println(" Inside share's finally...");
 		}
