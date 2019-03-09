@@ -20,6 +20,7 @@ public class TryWithResourcesDemo {
             while((numBytesRead = in.read(byteBuf)) != -1) {
                 out.write(byteBuf, 0, numBytesRead);
             }
+            throw new IOException("Important Exception!!");
         }
     }
 
@@ -29,6 +30,9 @@ public class TryWithResourcesDemo {
         }
         catch(IOException e) {
             e.printStackTrace();
+//            Throwable[] throwables = e.getSuppressed();
+//            System.out.println(throwables[0].getMessage());
+//            System.out.println(throwables[1].getMessage());
         }
     }
 }
