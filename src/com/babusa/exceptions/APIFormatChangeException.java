@@ -35,6 +35,13 @@ public class APIFormatChangeException extends Exception {
         super(message);
     }
 
+    public APIFormatChangeException(String response, String element, String partner) {
+        super("Response :" + response + " , Element: code , Partner: " + partner);
+        setResponse(response);
+        setElementname(element);
+        setPartner(partner);
+    }
+
     public APIFormatChangeException(String response, String element, String partner, Throwable cause ) {
         super("Response :" + response + " , Element: code , Partner: " + partner, cause);
         setResponse(response);

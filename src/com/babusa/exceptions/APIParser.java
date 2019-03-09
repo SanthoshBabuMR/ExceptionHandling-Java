@@ -14,8 +14,16 @@ public class APIParser {
 			}
 		} catch (NumberFormatException e) {
 			// e.printStackTrace();
-			throw new APIFormatChangeException(response, "code", partner, e);
+			// -- simple message
 			// throw new APIFormatChangeException("Response :" + response + " , Element: code , Partner: " + partner);
+			// -- with format
+			// throw new APIFormatChangeException(response, "code", partner, e);
+			// -- with format and cause of exception
+			// throw new APIFormatChangeException(response, "code", partner, e);
+			// -- with format and cause of exception
+			APIFormatChangeException e1 = new APIFormatChangeException(response, "code", partner);
+			e1.initCause(e);
+			throw e1;
 		}
 		return responseCode;
 	}
