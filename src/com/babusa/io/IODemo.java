@@ -105,12 +105,18 @@ public class IODemo {
         System.out.println("separator: " + f.separator); // dir separator in path name (string type)
         System.out.println("separatorChar: " + f.separatorChar); // dir separator in path name (char type)
         System.out.println("getParent(): " + f.getParent());
-        System.out.println("lastModified(): " + f.lastModified());
+        System.out.println("lastModified(): " + f.lastModified()); // time in milliseconds since 1970 jan 1
         System.out.println("exists(): " + f.exists());
         System.out.println("isFile(): " + f.isFile());
         System.out.println("isDirectory(): " + f.isDirectory());
         System.out.println("length(): " + f.length());
-        System.out.println("(): " + f);
+
+        System.out.println("My Working or user directory: " + System.getProperty("user.dir"));
+        System.out.println("new File(\"tesdir\").mkdir(): " + new File("testdir").mkdir());
+        System.out.println("new File(\"tesdir/test\").mkdir(): " + new File("testdir/test").mkdir());
+        System.out.println("new File(\"tesdir\").delete(): " + new File("testdir").delete());
+        System.out.println("new File(\"testdir/test1/test2\").mkdir(): " + new File("testdir/test1/test2").mkdir());
+        System.out.println("new File(\"testdir/test1/test2\").mkdirs(): " + new File("testdir/test1/test2").mkdirs());
         System.out.println("(): " + f);
 
 
