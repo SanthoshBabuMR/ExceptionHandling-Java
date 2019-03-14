@@ -125,8 +125,23 @@ public class IODemo {
         } catch(IOException e) {
             e.printStackTrace();
         }
+    }
 
+    public static void dirFilter(boolean applyFilter) {
+        System.out.println("\nInside dirFilter...");
 
+        File path = new File(".");
+        String[] list;
+
+        if(!applyFilter) {
+            list = path.list();
+        } else {
+            list = path.list(new DirFilter());
+        }
+
+        for (String dirItem:list) {
+            System.out.println(dirItem);
+        }
     }
 
     public static void main(String[] args) {
@@ -134,8 +149,16 @@ public class IODemo {
         // fileCopyWithBufferAndArray();
         // System.out.println(System.getProperty("file.encoding"));
         // readFromStandardInput();
-        fileMethodsDemo();
-        // dirFilter(false);
+        // fileMethodsDemo();
+        dirFilter(true);
     }
 
+}
+
+
+class DirFilter implements FilenameFilter {
+    // Holds filtering criteria
+    public boolean accept(File file, String name) {
+        return name.endsWith(".jpg") || name.endsWith(".JPG");
+    }
 }
