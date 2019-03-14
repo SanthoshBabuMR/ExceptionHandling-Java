@@ -117,7 +117,14 @@ public class IODemo {
         System.out.println("new File(\"tesdir\").delete(): " + new File("testdir").delete());
         System.out.println("new File(\"testdir/test1/test2\").mkdir(): " + new File("testdir/test1/test2").mkdir());
         System.out.println("new File(\"testdir/test1/test2\").mkdirs(): " + new File("testdir/test1/test2").mkdirs());
-        System.out.println("(): " + f);
+
+        try {
+            File f2 = new File("temp.txt");
+            System.out.println("f2.createNewFile(): "  + f2.createNewFile());
+            System.out.println("f2.renameTo(...): " + f2.renameTo(new File("testdir/temp1.txt")));
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
