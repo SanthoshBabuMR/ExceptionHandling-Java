@@ -150,10 +150,72 @@ public class IODemo {
         // System.out.println(System.getProperty("file.encoding"));
         // readFromStandardInput();
         // fileMethodsDemo();
-        dirFilter(true);
+        // dirFilter(true);
+
+        // serialization
+
+        if (args.length > 0 && args[0].equals("true")) {
+            new IODemo().doSerialization();
+        }
+        new IODemo().doDeserialization();
+
     }
 
+    public void doSerialization() {
+        System.out.println("\nInside doSerialization...");
+
+        SerializableDemo serializableDemo = new SerializableDemo();
+        serializableDemo.setName("Java");
+        System.out.println("name (before serialization): " + serializableDemo.getName());
+        System.out.println("id (before serialization): " + serializableDemo.getId());
+
+        try(ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("java-obj.ser")))) {
+            out.writeObject(serializableDemo);
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void doDeserialization() {
+        System.out.println("\nInside doDeserialization...");
+
+        try(ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("java-obj.ser")))) {
+            SerializableDemo serializableDemo = (SerializableDemo) in.readObject();
+            System.out.println("name (after serialization): " + serializableDemo.getName());
+            System.out.println("id (after serialization): " + serializableDemo.getId());
+
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // By convention, static nested classes should be placed before static methods
+    public static class SerializableDemo implements Serializable {
+        // static final long serialVersionUID = 8882416210786165012L;
+        private String name;
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        private transient  int id = 4;
+        public int getId() { return id; }
+
+        // private String gender;
+
+    }
 }
+
+
 
 
 class DirFilter implements FilenameFilter {
