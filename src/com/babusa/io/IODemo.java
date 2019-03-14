@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class Demo {
+public class IODemo {
     public static void main(String[] args) {
         try {
             FileInputStream fis = new FileInputStream("/Users/babusa/Documents/webster/project/ExceptionHandling-Java/src/com/babusa/io/data.txt");
