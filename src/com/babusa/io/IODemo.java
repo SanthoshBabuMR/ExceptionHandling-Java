@@ -1,11 +1,7 @@
 package com.semanticsquare.io;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
 
 public class IODemo {
     static String inFileStr = "/Users/babusa/Documents/webster/project/ExceptionHandling-Java/src/com/babusa/io/in-commons-lang3-3.8.1-bin.tar.gz";
@@ -58,9 +54,48 @@ public class IODemo {
         System.out.println("fileCopyWithBufferAndArray: " + (elapsedTime / 1000000.0) + " msec");
     }
 
+    public static void readFromStandardInput() {
+        System.out.println("\nInside readFromStandardInput ...");
+        String data;
+
+        /*
+        System.out.println("Enter \"start\" to continue (Using BufferedReader): ");
+
+        try(BufferedReader in = new BufferedReader(new InputStreamReader(System.in, "UTF-8"))) {
+            while((data = in.readLine()) != null && !data.equals("start")) {
+                System.out.println("\n Did not enter \"start\". Try again: ");
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Correct!!");
+        */
+
+        System.out.println("\nEnter \"start\" to continue (Using java.util.Scanner): ");
+        Scanner scanner = new Scanner(System.in);
+
+        while(!(data = scanner.nextLine()).equals("start")) {
+            System.out.println("\n Did not enter \"start\". Try again: ");
+        }
+
+        System.out.println("Now, enter the start code");
+        int code = scanner.nextInt(); // other methods: nextLong, nextDouble
+        System.out.println("Thanks, you entered code: " + code);
+
+        Scanner s1 = new Scanner("Hello, how are you?");
+        while(s1.hasNext()) {
+            System.out.println(s1.next());
+        }
+
+    }
+
     public static void main(String[] args) {
         //fileCopyNoBuffer();
-        fileCopyWithBufferAndArray();
-        System.out.println(System.getProperty("file.encoding"));
+        // fileCopyWithBufferAndArray();
+        // System.out.println(System.getProperty("file.encoding"));
+        readFromStandardInput();
     }
+
 }
