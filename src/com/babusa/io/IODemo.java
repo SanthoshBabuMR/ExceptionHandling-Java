@@ -91,11 +91,38 @@ public class IODemo {
 
     }
 
+    public static void fileMethodsDemo(){
+        System.out.println("\nInside fileMethodsDemo...");
+        File f = new File("/Users/babusa/Documents/webster/project/ExceptionHandling-Java/src/../goku-file.jpg");
+
+        System.out.println("getAbsolutePath(): " + f.getAbsoluteFile());
+        try {
+            System.out.println("getCanonicalPath(): " + f.getCanonicalPath());
+            System.out.println("createNewFile(): " + f.createNewFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("separator: " + f.separator); // dir separator in path name (string type)
+        System.out.println("separatorChar: " + f.separatorChar); // dir separator in path name (char type)
+        System.out.println("getParent(): " + f.getParent());
+        System.out.println("lastModified(): " + f.lastModified());
+        System.out.println("exists(): " + f.exists());
+        System.out.println("isFile(): " + f.isFile());
+        System.out.println("isDirectory(): " + f.isDirectory());
+        System.out.println("length(): " + f.length());
+        System.out.println("(): " + f);
+        System.out.println("(): " + f);
+
+
+    }
+
     public static void main(String[] args) {
         //fileCopyNoBuffer();
         // fileCopyWithBufferAndArray();
         // System.out.println(System.getProperty("file.encoding"));
-        readFromStandardInput();
+        // readFromStandardInput();
+        fileMethodsDemo();
+        // dirFilter(false);
     }
 
 }
