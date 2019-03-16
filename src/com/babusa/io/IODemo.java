@@ -225,8 +225,9 @@ public class IODemo {
         } */
 
         try {
-             System.out.println(new String("€".getBytes("UTF-8"), "UTF-8"));
-//            System.out.println(new String("€".getBytes("US-ASCII"), "UTF-8"));
+//             System.out.println(new String("€".getBytes("UTF-8"), "UTF-8"));
+            System.out.println(new String("a".getBytes("US-ASCII"), "UTF-8"));
+            System.out.println(new String("a".getBytes("US-ASCII"), "UTF-16"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
          }
