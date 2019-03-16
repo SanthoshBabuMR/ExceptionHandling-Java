@@ -154,10 +154,12 @@ public class IODemo {
 
         // serialization
 
-        if (args.length > 0 && args[0].equals("true")) {
-            new IODemo().doSerialization();
-        }
-        new IODemo().doDeserialization();
+//        if (args.length > 0 && args[0].equals("true")) {
+//            new IODemo().doSerialization();
+//        }
+//        new IODemo().doDeserialization();
+
+        encodingSync();
 
     }
 
@@ -198,7 +200,7 @@ public class IODemo {
 
     // By convention, static nested classes should be placed before static methods
     public static class SerializableDemo implements Serializable {
-        // static final long serialVersionUID = 8882416210786165012L;
+        static final long serialVersionUID = 8882416210786165012L;
         private String name;
         public String getName() {
             return name;
@@ -210,7 +212,24 @@ public class IODemo {
         private transient  int id = 4;
         public int getId() { return id; }
 
-        // private String gender;
+        private String gender;
+    }
+
+    public static void encodingSync() {
+        /* try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/babusa/Documents/webster/project/ExceptionHandling-Java/src/com/babusa/io/encoding"), "UTF-16BE"))) {
+            System.out.println(br.readLine());
+        } catch(UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
+        } */
+
+        try {
+             System.out.println(new String("€".getBytes("UTF-8"), "UTF-8"));
+//            System.out.println(new String("€".getBytes("US-ASCII"), "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+         }
 
     }
 }
